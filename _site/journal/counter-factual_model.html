@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Counter Factual Model | Disorder Transform
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Disorder Transform" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="Disorder Transform | Math, physics, life, universe and everything"/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Counter Factual Model | Disorder Transform</title>
+<meta name="generator" content="Jekyll v3.6.2" />
+<meta property="og:title" content="Counter Factual Model" />
+<meta name="author" content="Junior A. Koch" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Inferência Causal" />
+<meta property="og:description" content="Inferência Causal" />
+<link rel="canonical" href="http://localhost:4000/journal/counter-factual_model.html" />
+<meta property="og:url" content="http://localhost:4000/journal/counter-factual_model.html" />
+<meta property="og:site_name" content="Disorder Transform" />
+<meta property="og:image" content="http://localhost:4000/whatif.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-01T00:00:00-03:00" />
+<script type="application/ld+json">
+{"description":"Inferência Causal","image":"http://localhost:4000/whatif.jpg","@type":"BlogPosting","url":"http://localhost:4000/journal/counter-factual_model.html","dateModified":"2019-09-01T00:00:00-03:00","datePublished":"2019-09-01T00:00:00-03:00","headline":"Counter Factual Model","author":{"@type":"Person","name":"Junior A. Koch"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/counter-factual_model.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Disorder Transform</a>
+    <small class="masthead-subtitle">Math, physics, life, universe and everything</small>
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+      <a href="/menu/contact.html">Contact</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  Counter Factual Model
+</h1>
+
+
+  <img src="/assets/img/whatif.jpg">
+
+
+<h1 id="inferência-causal">Inferência Causal</h1>
+
+<p>É comum a confusão entre causa e associação e isso pode levar a muitas interpretações errôneas. Supomos que <em>X</em> e <em>Y</em> representam a distribuição de duas variáveis aleatórias, <em>x</em> e <em>y</em>. Ao afirmar “<em>X causa Y</em>” estamos dizendo que mudar o valor de <em>X</em> irá mudar o valor da distribuição <em>Y</em>. Se “<em>X causa Y</em>”, <em>X</em> e <em>Y</em> estão associados, mas o contrário não é necessariamente verdade. Vamos analisar sobre maneiras de abordar causalidade: modelos contrafactuais e modelos gráficos.</p>
+
+<h2 id="modelo-contrafactual">Modelo Contrafactual</h2>
+
+<p>Usaremos o dataset abaixo no qual temos algumas características de produtos de um e-Commerce juntamente com sua probabilidade de venda.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/counter_factual_data_example.csv'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'Sold'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'Selling_probability'</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Neste dataset alguns produtos foram vendidos com frete grátis, <code class="highlighter-rouge">Free_Shipment = 1</code> e outros não <code class="highlighter-rouge">Free_Shipment = 0</code>. Estamos interessados em saber se oferecer frete grátis aumenta a probabilidade de venda de um produto, ou seja, <code class="highlighter-rouge">Free_Shipment</code> causa <code class="highlighter-rouge">Sold</code>. Os dados que possímos são dados observados e portanto não podemos voltar no tempo e oferecer frete grátis e observar novamente.</p>
+
+<p>Usaremos <code class="highlighter-rouge">Free_Shipment</code> como a variável binária <script type="math/tex">X</script> e <code class="highlighter-rouge">Sold</code> como a variável de saída <script type="math/tex">Y</script>. É comum chamar <script type="math/tex">X</script> de variável de tratamento e essa abordagem de <em>efeito pós tratamento</em>. Então precisamos diferenciar as afirmações:</p>
+
+<ul>
+  <li>“<em>X</em> causa <em>Y</em>”;</li>
+  <li>“<em>X</em> está associado a <em>Y</em>”.</li>
+</ul>
+
+<p>Para isso vamos utilizar duas variáveis aleatórias chamadas de <strong>potenciais resultados</strong>. São elas:</p>
+
+<ul>
+  <li><script type="math/tex">C_{0}</script> - o resultado se <script type="math/tex">X=0</script>;</li>
+  <li><script type="math/tex">C_{1}</script> - o resultado se <script type="math/tex">X=1</script>.</li>
+</ul>
+
+<p>Assim, <script type="math/tex">Y = C_{0}</script> se <script type="math/tex">X = 0</script> e <script type="math/tex">Y = C_{1}</script> se <script type="math/tex">X = 1</script>, ou ainda a chamada <strong>relação de consistência</strong>,</p>
+
+<p><script type="math/tex">Y = C_{X}</script>.</p>
+
+<p>Vamos fazer isso no nosso dataset.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Free_Shipment'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s">'Sold'</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Free_Shipment'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s">'Sold'</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[[</span><span class="s">'Free_Shipment'</span><span class="p">,</span><span class="s">'Sold'</span><span class="p">,</span><span class="s">'C0'</span><span class="p">,</span><span class="s">'C1'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Os <code class="highlighter-rouge">NaN</code> indicam valores não observados. Se <script type="math/tex">X=0</script> não temos como observar <script type="math/tex">C_{1}</script>, por isso diz-se que <script type="math/tex">C_{1}</script> é <strong>contrafactual</strong> já que ele representa qual seria o resultado, contra os fatos, se <script type="math/tex">X=1</script>.</p>
+
+<p>Estas novas variáveis podem ser vistas como variáveis ocultas encontradas em outros modelos.</p>
+
+<p>Agora podemos definir o <strong>efeito causal médio</strong> ou <strong>efeito de tratamento médio</strong>. Este é dado por</p>
+
+<p><script type="math/tex">\theta  = \mathbb{E}(C_{1})-\mathbb{E}(C_{0})</script>.</p>
+
+<p>Podemos interpretar $\theta$ como o valor esperado dos resultados caso todos os produtos tivessem <script type="math/tex">X=1</script> menos o valor esperado dos resultados caso todos os produtos tivessem <script type="math/tex">X=0</script>. Há algumas maneiras de medir o efeito causal, por exemplo, se <script type="math/tex">C_{1}$ e</script>C_{0}$$ são binários usualmente define-se a razão causal provável</p>
+
+<script type="math/tex; mode=display">\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{1}=0)} \div \frac{\mathbb{P}(C_{0}=1)}{\mathbb{P}(C_{0}=0)}</script>
+
+<p>e o risco causal relativo</p>
+
+<p><script type="math/tex">\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}</script></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># efeito causal médio</span>
+<span class="n">ecm</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c"># razao causal provável</span>
+<span class="n">p_c1_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p_c1_0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_c1_1</span>
+<span class="n">p_c0_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p_c0_0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_c0_1</span>
+
+<span class="n">rcp</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_c1_1</span><span class="o">/</span><span class="n">p_c1_0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p_c0_1</span><span class="o">/</span><span class="n">p_c0_0</span><span class="p">)</span>
+
+<span class="c"># risco causal relativo</span>
+<span class="n">rcr</span> <span class="o">=</span> <span class="n">p_c1_1</span> <span class="o">/</span> <span class="n">p_c0_1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"ECM: {:.3f}| RCP: {:.3f}| RCR: {:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ecm</span><span class="p">,</span><span class="n">rcp</span><span class="p">,</span><span class="n">rcr</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Já a associação é definida como</p>
+
+<script type="math/tex; mode=display">\alpha = \mathbb{E}(Y|X=1) - \mathbb{E}(Y|X=0),</script>
+
+<p>ou seja, o valor esperado de <script type="math/tex">Y</script> dado que <script type="math/tex">X=1</script> menos o valor esperado de <script type="math/tex">Y</script> dado que <script type="math/tex">X=0</script>. Vejamos a associação para nossos dados:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">association</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Free_Shipment'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s">'Sold'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Free_Shipment'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s">'Sold'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Association: {:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">association</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Verificamos uma associação positiva, ou seja, oferecer frete <script type="math/tex">X=1</script> grátis aumenta as chances de venda, mas a associação não é igual ao efeito causal médio, como geralmente é o caso.</p>
+
+<p>O que fazemos em machine learning usando aprendizado supervisionado está voltado à associação. Coletamos observações independentes umas das outras e encontramos uma função que generaliza as distribuições das features para encontrar <script type="math/tex">p(Y\|X_{1},...,X_{n})</script>. Para entender a causalidade precisamos encontrar algo diferente, <script type="math/tex">p(Y\|X_{1}=x,...,X_{n})</script>, a distribuição de <script type="math/tex">Y</script> dado que <script type="math/tex">X_{1}</script> tem valor igual a <script type="math/tex">x</script> para todas as observações.</p>
+
+
+<span class="post-date">
+  Written on
+  
+  September
+  1st
+    ,
+  2019
+  by
+  
+    Junior A. Koch
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Counter Factual Model&amp;url=/journal/counter-factual_model.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/journal/counter-factual_model.html&amp;title=Counter Factual Model" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/journal/counter-factual_model.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">Disorder Transform | Math, physics, life, universe and everything by Junior A. Koch</a></div>
+</footer>
+
+  </div>
+
+</body>
+</html>
