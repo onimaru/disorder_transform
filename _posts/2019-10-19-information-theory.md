@@ -7,8 +7,6 @@ tags: [information, Kullback, Leibler, mutual information, conditional informati
 image: information_theory.jpg
 ---
 
-# Information Theory
-
 Suppose we have a random variable $$x$$ and we are interested in how much information we get when $$x$$ is measured. If the event is highly improbable we have more information than if it is highly probable. Information is given by a quantity $$h(x)$$ that is a function of the probability distribution $$p(x)$$. If two events are observed and unrelated the total information will be the sum of information in both events:
 
 $$h(x,y) = h(x) + h(y)\ \iff \ p(x,y) = p(x)p(y)$$

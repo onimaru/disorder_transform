@@ -12,7 +12,7 @@
 					<dc:creator>Junior A. Koch</dc:creator>
 				
 				
-					<description>&lt;h1 id=&quot;information-theory&quot;&gt;Information Theory&lt;/h1&gt;
+					<description>&lt;p&gt;Suppose we have a random variable &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and we are interested in how much information we get when &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; is measured. If the event is highly improbable we have more information than if it is highly probable. Information is given by a quantity &lt;script type=&quot;math/tex&quot;&gt;h(x)&lt;/script&gt; that is a function of the probability distribution &lt;script type=&quot;math/tex&quot;&gt;p(x)&lt;/script&gt;. If two events are observed and unrelated the total information will be the sum of information in both events:&lt;/p&gt;
 
 </description>
 				
