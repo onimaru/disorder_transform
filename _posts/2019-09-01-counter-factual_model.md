@@ -53,13 +53,14 @@ Agora podemos definir o **efeito causal médio** ou **efeito de tratamento médi
 
 $$\theta  = \mathbb{E}(C_{1})-\mathbb{E}(C_{0})$$.
 
-Podemos interpretar $\theta$ como o valor esperado dos resultados caso todos os produtos tivessem $$X=1$$ menos o valor esperado dos resultados caso todos os produtos tivessem $$X=0$$. Há algumas maneiras de medir o efeito causal, por exemplo, se $$C_{1}$ e $$C_{0}$$ são binários usualmente define-se a razão causal provável
+Podemos interpretar $$\theta$$ como o valor esperado dos resultados caso todos os produtos tivessem $$X=1$$ menos o valor esperado dos resultados caso todos os produtos tivessem $$X=0$$. Há algumas maneiras de medir o efeito causal, por exemplo, se $$C_{1}$$ e $$C_{0}$$ são binários usualmente define-se a razão causal provável
 
 $$\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{1}=0)} \div \frac{\mathbb{P}(C_{0}=1)}{\mathbb{P}(C_{0}=0)}$$
 
 e o risco causal relativo
 
 $$\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}$$
+
 ```python
 # efeito causal médio
 ecm = df['C1'].sum() / df.shape[0] - df['C0'].sum() / df.shape[0]
