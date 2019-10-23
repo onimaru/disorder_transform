@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Information Theory | Disorder Transform
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Disorder Transform" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="Disorder Transform | Math, physics, life, universe and everything"/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Information Theory | Disorder Transform</title>
+<meta name="generator" content="Jekyll v3.6.2" />
+<meta property="og:title" content="Information Theory" />
+<meta name="author" content="Junior A. Koch" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Information Theory" />
+<meta property="og:description" content="Information Theory" />
+<link rel="canonical" href="http://localhost:4000/journal/information-theory.html" />
+<meta property="og:url" content="http://localhost:4000/journal/information-theory.html" />
+<meta property="og:site_name" content="Disorder Transform" />
+<meta property="og:image" content="http://localhost:4000/information_theory.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-10-19T00:00:00-03:00" />
+<script type="application/ld+json">
+{"description":"Information Theory","image":"http://localhost:4000/information_theory.jpg","@type":"BlogPosting","url":"http://localhost:4000/journal/information-theory.html","dateModified":"2019-10-19T00:00:00-03:00","datePublished":"2019-10-19T00:00:00-03:00","headline":"Information Theory","author":{"@type":"Person","name":"Junior A. Koch"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/information-theory.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Disorder Transform</a>
+    <small class="masthead-subtitle">Math, physics, life, universe and everything</small>
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+      <a href="/menu/contact.html">Contact</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  Information Theory
+</h1>
+
+
+  <img src="/assets/img/information_theory.jpg">
+
+
+<h1 id="information-theory">Information Theory</h1>
+
+<p>Suppose we have a random variable <script type="math/tex">x</script> and we are interested in how much information we get when <script type="math/tex">x</script> is measured. If the event is highly improbable we have more information than if it is highly probable. Information is given by a quantity <script type="math/tex">h(x)</script> that is a function of the probability distribution <script type="math/tex">p(x)</script>. If two events are observed and unrelated the total information will be the sum of information in both events:</p>
+
+<script type="math/tex; mode=display">h(x,y) = h(x) + h(y)\ \iff \ p(x,y) = p(x)p(y)</script>
+
+<p>We see that information depends on the logarithm of the probability distribution. For a discrete <script type="math/tex">x</script> we have</p>
+
+<script type="math/tex; mode=display">h(x) = - log_{2}p(x).</script>
+
+<p>The expectation of this quantity is what we call <code class="highlighter-rouge">entropy</code> of the variable <script type="math/tex">x</script>,</p>
+
+<script type="math/tex; mode=display">H[x] = -  \sum_{x} p(x) log_{2}p(x)</script>
+
+<p>If there’s no chance o observing <script type="math/tex">x</script>, i.e. <script type="math/tex">p(x)=0</script>, then we get no information <script type="math/tex">H[x]=0</script>.</p>
+
+<p>As an example, suppose we observe the throw of a fair 8-sided dice and we want to transmit the information about the expectation:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">H</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">3.0</span>
+</code></pre></div></div>
+<p>This is measured in <code class="highlighter-rouge">bits</code>. In this case we need at least a 3 <code class="highlighter-rouge">bits</code> number to transmit the information, no less than that. When <script type="math/tex">x</script> is continuous it is common to use the natural logarithm and the unit becomes <code class="highlighter-rouge">nats</code> instead of bits.</p>
+
+<p>Let us see an example of three distributions with the same mean but different standard deviation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.0</span><span class="p">])</span>
+</code></pre></div></div>
+<p>Define a function to compute entropy:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">H</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">([</span><span class="o">-</span><span class="n">val</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="n">H</span><span class="p">(</span><span class="n">p1</span><span class="p">),</span><span class="n">H</span><span class="p">(</span><span class="n">p2</span><span class="p">),</span><span class="n">H</span><span class="p">(</span><span class="n">p3</span><span class="p">)</span>
+<span class="p">(</span><span class="mf">1.6094</span><span class="p">,</span> <span class="mf">1.3762</span><span class="p">,</span> <span class="mf">0.0629</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The narrower distribution has a smaller entropy. This is because the uncertainty about its expectation is smaller. If some <script type="math/tex">p(x_{i})=1</script> all other <script type="math/tex">p(x_{j \ne i})=0</script>, uncertainty is zero and we get no information <script type="math/tex">H(x_{i})=0</script>.</p>
+
+<h2 id="differential-entropy">Differential Entropy</h2>
+
+<p>We can use a continuous distribution, <script type="math/tex">p(x)</script> and the discrete sum becomes an integral and the entropy is usually called <code class="highlighter-rouge">differential entropy</code>:</p>
+
+<script type="math/tex; mode=display">H[x] = -\int p(x) \ln p(x) dx.</script>
+
+<p>We can now use <code class="highlighter-rouge">Lagrange multipliers</code> to find a distribution which maximizes the differential entropy. To do that we need to constrain the first and second moments of <script type="math/tex">p(x)</script>:</p>
+
+<script type="math/tex; mode=display">\int_{-\infty}^{+\infty}p(x)dx = 1,</script>
+
+<script type="math/tex; mode=display">\int_{-\infty}^{+\infty} x p(x)dx = \mu,</script>
+
+<script type="math/tex; mode=display">\int_{-\infty}^{+\infty} (x- \mu)^{2} p(x)dx = \sigma^{2}.</script>
+
+<p>Setting the <code class="highlighter-rouge">variational derivative</code> to zero we get as solution <script type="math/tex">p(x) = \exp{(-1 + \lambda_{1} + \lambda_{2} x + \lambda_{3} (x - \mu)^{2})}</script>. Using substitution we get:</p>
+
+<script type="math/tex; mode=display">p(x) = \frac{1}{\sqrt{2 \pi \sigma^{2}}}\exp{\left(-\frac{(x - \mu)^{2}}{2 \sigma^{2}}\right)}</script>
+
+<p>The Gaussian distribution is the one that maximizes differential entropy which is:</p>
+
+<script type="math/tex; mode=display">H[x] =  -\int_{-\infty}^{+\infty} \mathcal{N}(x\vert \mu, \sigma^{2}) \ln \mathcal{N}(x\vert \mu, \sigma^{2}) dx = \frac{1}{2}(1 + \ln{2 \pi \sigma^{2}})</script>
+
+<p>This result agrees with what we found earlier, the entropy increases as the distribution becomes broader, i.e., <script type="math/tex">\sigma^{2}</script> increases.</p>
+
+<h2 id="conditional-entropy">Conditional Entropy</h2>
+
+<p>Suppose now we have a joint distribution <script type="math/tex">p(x,y)</script> and have an observation of <script type="math/tex">x</script>. It is possible to compute the additional information needed to specify the corresponding observation of <script type="math/tex">y</script> with <script type="math/tex">- \ln p(y\vert x).</script> Thus the average additional information to specify <script type="math/tex">y</script>, called <code class="highlighter-rouge">conditional entropy</code> of <script type="math/tex">y</script> given <script type="math/tex">x</script>, is:</p>
+
+<script type="math/tex; mode=display">H[y\vert x] = -\int \int p(y,x) \ln{ p(y\vert x)}dydx</script>
+
+<p>Using <script type="math/tex">p(y\vert x) = \frac{p(y,x)}{p(x)}</script> we get:</p>
+
+<script type="math/tex; mode=display">H[y\vert x] = H[y,x] - H[x].</script>
+
+<h2 id="kullback-leibler-divergence">Kullback-Leibler Divergence</h2>
+
+<p>Suppose we have an unknown distribution <script type="math/tex">p(x)</script> and we are using another distribution <script type="math/tex">q(x)</script> to model it. We can compute the additional amount of information needed to specify <script type="math/tex">x \sim p(x)</script> when we observe <script type="math/tex">x \sim q(x)</script>:</p>
+
+<script type="math/tex; mode=display">KL(p\vert \vert q) = -\int p(x) \ln q(x) dx + \int p(x) \ln p(x) dx = -\int p(x) \ln{\left(\frac{q(x)}{p(x)} \right)}dx.</script>
+
+<p>This <code class="highlighter-rouge">relative entropy</code> is called <code class="highlighter-rouge">Kullback-Leibler Divergence</code> or simply <code class="highlighter-rouge">KL Divergence</code> and is a measure of dissimilarity between two distributions. Note that it is anti-symmetric,</p>
+
+<script type="math/tex; mode=display">KL(p\vert \vert q) \ne KL(q\vert \vert p).</script>
+
+<p>To accomplish the task of approximating <script type="math/tex">q(x)</script> to <script type="math/tex">p(x)</script> we may observe <script type="math/tex">x \sim p(x)</script> a finite number of times, <script type="math/tex">N</script>, use <script type="math/tex">q</script> as a parametric function, <script type="math/tex">q(x \vert \theta)</script> and use the expectation of <script type="math/tex">KL(p \vert \vert q).</script></p>
+
+<p>For a function <script type="math/tex">f(x)</script> its expectation is <script type="math/tex">\mathbb{E}[f] = \int p(x) f(x)dx</script> and for a <script type="math/tex">N</script> number of observations it becomes a finite sum:</p>
+
+<script type="math/tex; mode=display">\mathbb{E}[f] \approx \frac{1}{N} \sum_{n=1}^{N} f(x_{n}).</script>
+
+<p>For the KL divergence we have:</p>
+
+<script type="math/tex; mode=display">KL(p \vert \vert q) \approx \frac{1}{N} \sum_{n=1}^{N}(-\ln q(x_{n} \vert \theta) + \ln p(x_{n})).</script>
+
+<p>The first therm is the <code class="highlighter-rouge">negative log likelihood</code> for <script type="math/tex">\theta</script> under distribution <script type="math/tex">q(x\vert \theta)</script>. Because of that people usually say that <code class="highlighter-rouge">minimizing the KL divergence is equivalent to maximizing the likelihood function</code>.</p>
+
+<p>As an exercise we can find <script type="math/tex">KL(p\vert \vert q)</script> where <script type="math/tex">p(x)=\mathcal{N}(x\vert \mu, \sigma^{2})</script> and <script type="math/tex">q(x)=\mathcal{N}(x\vert m, s^{2})</script>.</p>
+
+<p><script type="math/tex">KL(p\vert \vert q) = -\int p(x) \ln{\frac{q(x)}{p(x)}}dx</script><br />
+<script type="math/tex">KL(p\vert \vert q) = -\int p(x) \ln{q(x)}dx + \int p(x) \ln{p(x)}dx</script><br />
+<script type="math/tex">KL(p\vert \vert q) = \frac{1}{2}\int p(x) \ln{2 \pi s^{2}}dx + \frac{1}{2s^{2}}\int p(x)(x-m)^{2}dx - \frac{1}{2}(1+\ln{2 \pi \sigma^{2}})</script><br />
+<script type="math/tex">KL(p\vert \vert q) = \frac{1}{2}\ln{2 \pi s^{2}} - \frac{1}{2}(1+\ln{2 \pi \sigma^{2}})+ \frac{1}{2s^{2}}(\langle x \rangle^{2} -2m \langle x \rangle + m^{2})</script><br />
+<script type="math/tex">KL(p\vert \vert q) = \frac{1}{2} \ln{\frac{s^{2}}{\sigma^{2}}} - \frac{1}{2} + \frac{\sigma^{2}+(\mu - m)^{2}}{2s^{2}}</script><br />
+<script type="math/tex">KL(p\vert \vert q) = \ln{\frac{s}{\sigma}} - \frac{1}{2} + \frac{\sigma^{2}+(\mu - m)^{2}}{2s^{2}},</script><br />
+where <script type="math/tex">(\langle x \rangle -m)^{2} -\langle x \rangle^{2} = -2 \langle x \rangle m + m^{2}</script>.</p>
+
+<h3 id="f-divergence">f-Divergence</h3>
+
+<p>The KL divergence is the most famous function of a broader family called <code class="highlighter-rouge">f-Divergences</code>, more generally defined as:</p>
+
+<script type="math/tex; mode=display">D_{f}(p \vert \vert q) \equiv \frac{4}{1 - f^{2}} \left( 1 - \int p(x)^{\left(\frac{1 + f}{2} \right)} q(x)^{\left(\frac{1 - f}{2} \right)}dx \right)</script>
+
+<p>where <script type="math/tex">f</script> is a continuous real parameter, <script type="math/tex">-\infty \le f \le + \infty</script>. Some special cases are:</p>
+
+<script type="math/tex; mode=display">KL(p\vert \vert q) = \lim_{f \rightarrow 1} D_{f}(p \vert \vert q),</script>
+
+<script type="math/tex; mode=display">KL(q\vert \vert p) = \lim_{f \rightarrow -1} D_{f}(p \vert \vert q)</script>
+
+<p>and the <code class="highlighter-rouge">Hellinger distance</code></p>
+
+<script type="math/tex; mode=display">D_{H}(p \vert \vert q) = \lim_{f \rightarrow 0}  D_{f}(p \vert \vert q) = \int \left( p(x)^{2} - q(x)^{2} \right)^{2}dx.</script>
+
+<p>Since we only work with distributions with compact support <script type="math/tex">D_{f}(p \vert \vert q) \ge 0</script>, again it is zero if and only if <script type="math/tex">p(x) = q(x)</script>.</p>
+
+<h2 id="mutual-information">Mutual Information</h2>
+
+<p>For a joint distribution <script type="math/tex">p(y,x)</script> the KL divergence can be used to quantify how close the two variables are to be independent, i.e., <script type="math/tex">p(y,x) = p(y)p(x)</script>, this is called <code class="highlighter-rouge">mutual information</code> between <script type="math/tex">x</script> and <script type="math/tex">y</script>:</p>
+
+<p><script type="math/tex">I[y,x] = KL(p(y,x)\vert \vert p(y)p(x)) = -\int \int p(y,x) \ln \frac{p(y)p(x)}{p(y,x)}dydx</script>.</p>
+
+<p><script type="math/tex">I[y,x] \ge 0</script> and <script type="math/tex">I[y,x] = 0 \iff</script> <script type="math/tex">x</script> and <script type="math/tex">y</script> are independent.</p>
+
+<p>Mutual information can be written with conditional entropy:</p>
+
+<p><script type="math/tex">I[y,x] = H[y] - H[y\vert x] = H[x] - H[x\vert y]</script>.</p>
+
+
+<span class="post-date">
+  Written on
+  
+  October
+  19th,
+  2019
+  by
+  
+    Junior A. Koch
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Information Theory&amp;url=/journal/information-theory.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/journal/information-theory.html&amp;title=Information Theory" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/journal/information-theory.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">Disorder Transform | Math, physics, life, universe and everything by Junior A. Koch</a></div>
+</footer>
+
+  </div>
+
+</body>
+</html>

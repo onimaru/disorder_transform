@@ -162,13 +162,14 @@
 
 <p><script type="math/tex">\theta  = \mathbb{E}(C_{1})-\mathbb{E}(C_{0})</script>.</p>
 
-<p>Podemos interpretar $\theta$ como o valor esperado dos resultados caso todos os produtos tivessem <script type="math/tex">X=1</script> menos o valor esperado dos resultados caso todos os produtos tivessem <script type="math/tex">X=0</script>. Há algumas maneiras de medir o efeito causal, por exemplo, se <script type="math/tex">C_{1}$ e</script>C_{0}$$ são binários usualmente define-se a razão causal provável</p>
+<p>Podemos interpretar <script type="math/tex">\theta</script> como o valor esperado dos resultados caso todos os produtos tivessem <script type="math/tex">X=1</script> menos o valor esperado dos resultados caso todos os produtos tivessem <script type="math/tex">X=0</script>. Há algumas maneiras de medir o efeito causal, por exemplo, se <script type="math/tex">C_{1}</script> e <script type="math/tex">C_{0}</script> são binários usualmente define-se a razão causal provável</p>
 
 <script type="math/tex; mode=display">\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{1}=0)} \div \frac{\mathbb{P}(C_{0}=1)}{\mathbb{P}(C_{0}=0)}</script>
 
 <p>e o risco causal relativo</p>
 
-<p><script type="math/tex">\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}</script></p>
+<script type="math/tex; mode=display">\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}</script>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># efeito causal médio</span>
 <span class="n">ecm</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 

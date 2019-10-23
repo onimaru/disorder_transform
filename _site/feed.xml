@@ -1,4 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-06T17:19:14-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Disorder Transform</title><subtitle>Math, physics, life, universe and everything</subtitle><author><name>Junior A. Koch</name></author><entry><title type="html">Counter Factual Model</title><link href="http://localhost:4000/journal/counter-factual_model.html" rel="alternate" type="text/html" title="Counter Factual Model" /><published>2019-09-01T00:00:00-03:00</published><updated>2019-09-01T00:00:00-03:00</updated><id>http://localhost:4000/journal/counter-factual_model</id><content type="html" xml:base="http://localhost:4000/journal/counter-factual_model.html">&lt;h1 id=&quot;inferência-causal&quot;&gt;Inferência Causal&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-23T18:43:12-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Disorder Transform</title><subtitle>Math, physics, life, universe and everything</subtitle><author><name>Junior A. Koch</name></author><entry><title type="html">Information Theory</title><link href="http://localhost:4000/journal/information-theory.html" rel="alternate" type="text/html" title="Information Theory" /><published>2019-10-19T00:00:00-03:00</published><updated>2019-10-19T00:00:00-03:00</updated><id>http://localhost:4000/journal/information-theory</id><content type="html" xml:base="http://localhost:4000/journal/information-theory.html">&lt;h1 id=&quot;information-theory&quot;&gt;Information Theory&lt;/h1&gt;
+
+&lt;p&gt;Suppose we have a random variable &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and we are interested in how much information we get when &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; is measured. If the event is highly improbable we have more information than if it is highly probable. Information is given by a quantity &lt;script type=&quot;math/tex&quot;&gt;h(x)&lt;/script&gt; that is a function of the probability distribution &lt;script type=&quot;math/tex&quot;&gt;p(x)&lt;/script&gt;. If two events are observed and unrelated the total information will be the sum of information in both events:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h(x,y) = h(x) + h(y)\ \iff \ p(x,y) = p(x)p(y)&lt;/script&gt;
+
+&lt;p&gt;We see that information depends on the logarithm of the probability distribution. For a discrete &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h(x) = - log_{2}p(x).&lt;/script&gt;
+
+&lt;p&gt;The expectation of this quantity is what we call &lt;code class=&quot;highlighter-rouge&quot;&gt;entropy&lt;/code&gt; of the variable &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H[x] = -  \sum_{x} p(x) log_{2}p(x)&lt;/script&gt;
+
+&lt;p&gt;If there’s no chance o observing &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, i.e. &lt;script type=&quot;math/tex&quot;&gt;p(x)=0&lt;/script&gt;, then we get no information &lt;script type=&quot;math/tex&quot;&gt;H[x]=0&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;As an example, suppose we observe the throw of a fair 8-sided dice and we want to transmit the information about the expectation:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;H&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;H&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is measured in &lt;code class=&quot;highlighter-rouge&quot;&gt;bits&lt;/code&gt;. In this case we need at least a 3 &lt;code class=&quot;highlighter-rouge&quot;&gt;bits&lt;/code&gt; number to transmit the information, no less than that. When &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; is continuous it is common to use the natural logarithm and the unit becomes &lt;code class=&quot;highlighter-rouge&quot;&gt;nats&lt;/code&gt; instead of bits.&lt;/p&gt;
+
+&lt;p&gt;Let us see an example of three distributions with the same mean but different standard deviation.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Define a function to compute entropy:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.6094&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.3762&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0629&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The narrower distribution has a smaller entropy. This is because the uncertainty about its expectation is smaller. If some &lt;script type=&quot;math/tex&quot;&gt;p(x_{i})=1&lt;/script&gt; all other &lt;script type=&quot;math/tex&quot;&gt;p(x_{j \ne i})=0&lt;/script&gt;, uncertainty is zero and we get no information &lt;script type=&quot;math/tex&quot;&gt;H(x_{i})=0&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;differential-entropy&quot;&gt;Differential Entropy&lt;/h2&gt;
+
+&lt;p&gt;We can use a continuous distribution, &lt;script type=&quot;math/tex&quot;&gt;p(x)&lt;/script&gt; and the discrete sum becomes an integral and the entropy is usually called &lt;code class=&quot;highlighter-rouge&quot;&gt;differential entropy&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H[x] = -\int p(x) \ln p(x) dx.&lt;/script&gt;
+
+&lt;p&gt;We can now use &lt;code class=&quot;highlighter-rouge&quot;&gt;Lagrange multipliers&lt;/code&gt; to find a distribution which maximizes the differential entropy. To do that we need to constrain the first and second moments of &lt;script type=&quot;math/tex&quot;&gt;p(x)&lt;/script&gt;:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_{-\infty}^{+\infty}p(x)dx = 1,&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_{-\infty}^{+\infty} x p(x)dx = \mu,&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_{-\infty}^{+\infty} (x- \mu)^{2} p(x)dx = \sigma^{2}.&lt;/script&gt;
+
+&lt;p&gt;Setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;variational derivative&lt;/code&gt; to zero we get as solution &lt;script type=&quot;math/tex&quot;&gt;p(x) = \exp{(-1 + \lambda_{1} + \lambda_{2} x + \lambda_{3} (x - \mu)^{2})}&lt;/script&gt;. Using substitution we get:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x) = \frac{1}{\sqrt{2 \pi \sigma^{2}}}\exp{\left(-\frac{(x - \mu)^{2}}{2 \sigma^{2}}\right)}&lt;/script&gt;
+
+&lt;p&gt;The Gaussian distribution is the one that maximizes differential entropy which is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H[x] =  -\int_{-\infty}^{+\infty} \mathcal{N}(x\vert \mu, \sigma^{2}) \ln \mathcal{N}(x\vert \mu, \sigma^{2}) dx = \frac{1}{2}(1 + \ln{2 \pi \sigma^{2}})&lt;/script&gt;
+
+&lt;p&gt;This result agrees with what we found earlier, the entropy increases as the distribution becomes broader, i.e., &lt;script type=&quot;math/tex&quot;&gt;\sigma^{2}&lt;/script&gt; increases.&lt;/p&gt;
+
+&lt;h2 id=&quot;conditional-entropy&quot;&gt;Conditional Entropy&lt;/h2&gt;
+
+&lt;p&gt;Suppose now we have a joint distribution &lt;script type=&quot;math/tex&quot;&gt;p(x,y)&lt;/script&gt; and have an observation of &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;. It is possible to compute the additional information needed to specify the corresponding observation of &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; with &lt;script type=&quot;math/tex&quot;&gt;- \ln p(y\vert x).&lt;/script&gt; Thus the average additional information to specify &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;, called &lt;code class=&quot;highlighter-rouge&quot;&gt;conditional entropy&lt;/code&gt; of &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; given &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H[y\vert x] = -\int \int p(y,x) \ln{ p(y\vert x)}dydx&lt;/script&gt;
+
+&lt;p&gt;Using &lt;script type=&quot;math/tex&quot;&gt;p(y\vert x) = \frac{p(y,x)}{p(x)}&lt;/script&gt; we get:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H[y\vert x] = H[y,x] - H[x].&lt;/script&gt;
+
+&lt;h2 id=&quot;kullback-leibler-divergence&quot;&gt;Kullback-Leibler Divergence&lt;/h2&gt;
+
+&lt;p&gt;Suppose we have an unknown distribution &lt;script type=&quot;math/tex&quot;&gt;p(x)&lt;/script&gt; and we are using another distribution &lt;script type=&quot;math/tex&quot;&gt;q(x)&lt;/script&gt; to model it. We can compute the additional amount of information needed to specify &lt;script type=&quot;math/tex&quot;&gt;x \sim p(x)&lt;/script&gt; when we observe &lt;script type=&quot;math/tex&quot;&gt;x \sim q(x)&lt;/script&gt;:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;KL(p\vert \vert q) = -\int p(x) \ln q(x) dx + \int p(x) \ln p(x) dx = -\int p(x) \ln{\left(\frac{q(x)}{p(x)} \right)}dx.&lt;/script&gt;
+
+&lt;p&gt;This &lt;code class=&quot;highlighter-rouge&quot;&gt;relative entropy&lt;/code&gt; is called &lt;code class=&quot;highlighter-rouge&quot;&gt;Kullback-Leibler Divergence&lt;/code&gt; or simply &lt;code class=&quot;highlighter-rouge&quot;&gt;KL Divergence&lt;/code&gt; and is a measure of dissimilarity between two distributions. Note that it is anti-symmetric,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;KL(p\vert \vert q) \ne KL(q\vert \vert p).&lt;/script&gt;
+
+&lt;p&gt;To accomplish the task of approximating &lt;script type=&quot;math/tex&quot;&gt;q(x)&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;p(x)&lt;/script&gt; we may observe &lt;script type=&quot;math/tex&quot;&gt;x \sim p(x)&lt;/script&gt; a finite number of times, &lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;, use &lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt; as a parametric function, &lt;script type=&quot;math/tex&quot;&gt;q(x \vert \theta)&lt;/script&gt; and use the expectation of &lt;script type=&quot;math/tex&quot;&gt;KL(p \vert \vert q).&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;For a function &lt;script type=&quot;math/tex&quot;&gt;f(x)&lt;/script&gt; its expectation is &lt;script type=&quot;math/tex&quot;&gt;\mathbb{E}[f] = \int p(x) f(x)dx&lt;/script&gt; and for a &lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt; number of observations it becomes a finite sum:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{E}[f] \approx \frac{1}{N} \sum_{n=1}^{N} f(x_{n}).&lt;/script&gt;
+
+&lt;p&gt;For the KL divergence we have:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;KL(p \vert \vert q) \approx \frac{1}{N} \sum_{n=1}^{N}(-\ln q(x_{n} \vert \theta) + \ln p(x_{n})).&lt;/script&gt;
+
+&lt;p&gt;The first therm is the &lt;code class=&quot;highlighter-rouge&quot;&gt;negative log likelihood&lt;/code&gt; for &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; under distribution &lt;script type=&quot;math/tex&quot;&gt;q(x\vert \theta)&lt;/script&gt;. Because of that people usually say that &lt;code class=&quot;highlighter-rouge&quot;&gt;minimizing the KL divergence is equivalent to maximizing the likelihood function&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;As an exercise we can find &lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q)&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;p(x)=\mathcal{N}(x\vert \mu, \sigma^{2})&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;q(x)=\mathcal{N}(x\vert m, s^{2})&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q) = -\int p(x) \ln{\frac{q(x)}{p(x)}}dx&lt;/script&gt;&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q) = -\int p(x) \ln{q(x)}dx + \int p(x) \ln{p(x)}dx&lt;/script&gt;&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q) = \frac{1}{2}\int p(x) \ln{2 \pi s^{2}}dx + \frac{1}{2s^{2}}\int p(x)(x-m)^{2}dx - \frac{1}{2}(1+\ln{2 \pi \sigma^{2}})&lt;/script&gt;&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q) = \frac{1}{2}\ln{2 \pi s^{2}} - \frac{1}{2}(1+\ln{2 \pi \sigma^{2}})+ \frac{1}{2s^{2}}(\langle x \rangle^{2} -2m \langle x \rangle + m^{2})&lt;/script&gt;&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q) = \frac{1}{2} \ln{\frac{s^{2}}{\sigma^{2}}} - \frac{1}{2} + \frac{\sigma^{2}+(\mu - m)^{2}}{2s^{2}}&lt;/script&gt;&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;KL(p\vert \vert q) = \ln{\frac{s}{\sigma}} - \frac{1}{2} + \frac{\sigma^{2}+(\mu - m)^{2}}{2s^{2}},&lt;/script&gt;&lt;br /&gt;
+where &lt;script type=&quot;math/tex&quot;&gt;(\langle x \rangle -m)^{2} -\langle x \rangle^{2} = -2 \langle x \rangle m + m^{2}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;f-divergence&quot;&gt;f-Divergence&lt;/h3&gt;
+
+&lt;p&gt;The KL divergence is the most famous function of a broader family called &lt;code class=&quot;highlighter-rouge&quot;&gt;f-Divergences&lt;/code&gt;, more generally defined as:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D_{f}(p \vert \vert q) \equiv \frac{4}{1 - f^{2}} \left( 1 - \int p(x)^{\left(\frac{1 + f}{2} \right)} q(x)^{\left(\frac{1 - f}{2} \right)}dx \right)&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; is a continuous real parameter, &lt;script type=&quot;math/tex&quot;&gt;-\infty \le f \le + \infty&lt;/script&gt;. Some special cases are:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;KL(p\vert \vert q) = \lim_{f \rightarrow 1} D_{f}(p \vert \vert q),&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;KL(q\vert \vert p) = \lim_{f \rightarrow -1} D_{f}(p \vert \vert q)&lt;/script&gt;
+
+&lt;p&gt;and the &lt;code class=&quot;highlighter-rouge&quot;&gt;Hellinger distance&lt;/code&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D_{H}(p \vert \vert q) = \lim_{f \rightarrow 0}  D_{f}(p \vert \vert q) = \int \left( p(x)^{2} - q(x)^{2} \right)^{2}dx.&lt;/script&gt;
+
+&lt;p&gt;Since we only work with distributions with compact support &lt;script type=&quot;math/tex&quot;&gt;D_{f}(p \vert \vert q) \ge 0&lt;/script&gt;, again it is zero if and only if &lt;script type=&quot;math/tex&quot;&gt;p(x) = q(x)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;mutual-information&quot;&gt;Mutual Information&lt;/h2&gt;
+
+&lt;p&gt;For a joint distribution &lt;script type=&quot;math/tex&quot;&gt;p(y,x)&lt;/script&gt; the KL divergence can be used to quantify how close the two variables are to be independent, i.e., &lt;script type=&quot;math/tex&quot;&gt;p(y,x) = p(y)p(x)&lt;/script&gt;, this is called &lt;code class=&quot;highlighter-rouge&quot;&gt;mutual information&lt;/code&gt; between &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;I[y,x] = KL(p(y,x)\vert \vert p(y)p(x)) = -\int \int p(y,x) \ln \frac{p(y)p(x)}{p(y,x)}dydx&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;I[y,x] \ge 0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;I[y,x] = 0 \iff&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; are independent.&lt;/p&gt;
+
+&lt;p&gt;Mutual information can be written with conditional entropy:&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;I[y,x] = H[y] - H[y\vert x] = H[x] - H[x\vert y]&lt;/script&gt;.&lt;/p&gt;</content><author><name>Junior A. Koch</name></author><category term="information" /><category term="Kullback" /><category term="Leibler" /><category term="mutual information" /><category term="conditional information" /><summary type="html">Information Theory</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/information_theory.jpg" /></entry><entry><title type="html">Counter Factual Model</title><link href="http://localhost:4000/journal/counter-factual_model.html" rel="alternate" type="text/html" title="Counter Factual Model" /><published>2019-09-01T00:00:00-03:00</published><updated>2019-09-01T00:00:00-03:00</updated><id>http://localhost:4000/journal/counter-factual_model</id><content type="html" xml:base="http://localhost:4000/journal/counter-factual_model.html">&lt;h1 id=&quot;inferência-causal&quot;&gt;Inferência Causal&lt;/h1&gt;
 
 &lt;p&gt;É comum a confusão entre causa e associação e isso pode levar a muitas interpretações errôneas. Supomos que &lt;em&gt;X&lt;/em&gt; e &lt;em&gt;Y&lt;/em&gt; representam a distribuição de duas variáveis aleatórias, &lt;em&gt;x&lt;/em&gt; e &lt;em&gt;y&lt;/em&gt;. Ao afirmar “&lt;em&gt;X causa Y&lt;/em&gt;” estamos dizendo que mudar o valor de &lt;em&gt;X&lt;/em&gt; irá mudar o valor da distribuição &lt;em&gt;Y&lt;/em&gt;. Se “&lt;em&gt;X causa Y&lt;/em&gt;”, &lt;em&gt;X&lt;/em&gt; e &lt;em&gt;Y&lt;/em&gt; estão associados, mas o contrário não é necessariamente verdade. Vamos analisar sobre maneiras de abordar causalidade: modelos contrafactuais e modelos gráficos.&lt;/p&gt;
 
@@ -46,13 +181,14 @@
 
 &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta  = \mathbb{E}(C_{1})-\mathbb{E}(C_{0})&lt;/script&gt;.&lt;/p&gt;
 
-&lt;p&gt;Podemos interpretar $\theta$ como o valor esperado dos resultados caso todos os produtos tivessem &lt;script type=&quot;math/tex&quot;&gt;X=1&lt;/script&gt; menos o valor esperado dos resultados caso todos os produtos tivessem &lt;script type=&quot;math/tex&quot;&gt;X=0&lt;/script&gt;. Há algumas maneiras de medir o efeito causal, por exemplo, se &lt;script type=&quot;math/tex&quot;&gt;C_{1}$ e&lt;/script&gt;C_{0}$$ são binários usualmente define-se a razão causal provável&lt;/p&gt;
+&lt;p&gt;Podemos interpretar &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; como o valor esperado dos resultados caso todos os produtos tivessem &lt;script type=&quot;math/tex&quot;&gt;X=1&lt;/script&gt; menos o valor esperado dos resultados caso todos os produtos tivessem &lt;script type=&quot;math/tex&quot;&gt;X=0&lt;/script&gt;. Há algumas maneiras de medir o efeito causal, por exemplo, se &lt;script type=&quot;math/tex&quot;&gt;C_{1}&lt;/script&gt; e &lt;script type=&quot;math/tex&quot;&gt;C_{0}&lt;/script&gt; são binários usualmente define-se a razão causal provável&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{1}=0)} \div \frac{\mathbb{P}(C_{0}=1)}{\mathbb{P}(C_{0}=0)}&lt;/script&gt;
 
 &lt;p&gt;e o risco causal relativo&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}&lt;/script&gt;&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}&lt;/script&gt;
+
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# efeito causal médio&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;ecm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'C1'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'C0'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
