@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Variational AutoEncoder | Disorder Transform
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Disorder Transform" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="Disorder Transform | Math, physics, life, universe and everything"/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Variational AutoEncoder | Disorder Transform</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Variational AutoEncoder" />
+<meta name="author" content="Junior A. Koch" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Variational AutoEncoders or VAE are a class of generative models based on latent variables. Suppose we have our multidimensional data and we want to build a model from which we can sample data at least similar to . We will make that with a multidimensional latent variable to create a map ." />
+<meta property="og:description" content="Variational AutoEncoders or VAE are a class of generative models based on latent variables. Suppose we have our multidimensional data and we want to build a model from which we can sample data at least similar to . We will make that with a multidimensional latent variable to create a map ." />
+<link rel="canonical" href="http://localhost:4000/journal/variational-autoencoder.html" />
+<meta property="og:url" content="http://localhost:4000/journal/variational-autoencoder.html" />
+<meta property="og:site_name" content="Disorder Transform" />
+<meta property="og:image" content="http://localhost:4000/information_theory.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-10T00:00:00-03:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-05-10T00:00:00-03:00","image":"http://localhost:4000/information_theory.jpg","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/variational-autoencoder.html"},"url":"http://localhost:4000/journal/variational-autoencoder.html","author":{"@type":"Person","name":"Junior A. Koch"},"headline":"Variational AutoEncoder","dateModified":"2020-05-10T00:00:00-03:00","description":"Variational AutoEncoders or VAE are a class of generative models based on latent variables. Suppose we have our multidimensional data and we want to build a model from which we can sample data at least similar to . We will make that with a multidimensional latent variable to create a map .","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Disorder Transform</a>
+    <small class="masthead-subtitle">Math, physics, life, universe and everything</small>
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+      <a href="/menu/contact.html">Contact</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  Variational AutoEncoder
+</h1>
+
+
+  <img src="/assets/img/information_theory.jpg">
+
+
+<p>Variational AutoEncoders or VAE are a class of generative models based on latent variables. Suppose we have our multidimensional data <script type="math/tex">X</script> and we want to build a model from which we can sample data at least similar to <script type="math/tex">X</script>. We will make that with a multidimensional latent variable <script type="math/tex">Z</script> to create a map <script type="math/tex">f:Z \to X</script>.</p>
+
+<p>We need to model <script type="math/tex">p(X) = \int p(X \vert Z)dZ</script>, where <script type="math/tex">p(X,Z) = p(X \vert Z)p(Z)</script>.</p>
+
+<p>The ideia of VAE is to infer <script type="math/tex">p(Z)</script>, but at first <script type="math/tex">p(Z \vert X)</script> is unknown. To deal with that let us use a method called Variational Inference (VI). It is very popular together with Markov Chain Monte Carlo (MCMC) methods.</p>
+
+<p>We treat this as an optimization problem, we model <script type="math/tex">p(Z \vert X)</script> using some distribution and minimize the Kullback-Liebler (KL) divergence between our chosen distribution, let us call it <script type="math/tex">q(Z \vert X)</script>, and <script type="math/tex">p(Z \vert X)</script>. We have</p>
+
+<p><script type="math/tex">KL \left[q(Z \vert X)\vert \vert p(Z \vert X) \right] = \sum_{Z} q(Z \vert X) \log{\frac{q(Z \vert X)}{p(Z \vert X)}}  = -\sum_{Z} q(Z \vert X) \log{\frac{p(Z \vert X)}{q(Z \vert X)}}</script>
+<script type="math/tex">KL \left[q(Z \vert X)\vert \vert p(Z \vert X) \right] = \mathbb{E}_{Z} \left[\log{\frac{p(Z \vert X)}{q(Z \vert X)}}\right] = \mathbb{E}_{Z} \left[\log{q(Z \vert X)} - \log{p(Z \vert X)}  \right]</script></p>
+
+<p>and we use Bayes Theorem treating <script type="math/tex">p(Z \vert X)</script> as a posterior: <script type="math/tex">p(Z \vert X) = \frac{p(X \vert Z)p(Z)}{p(X)}</script> rewriting the KL divergence</p>
+
+<script type="math/tex; mode=display">KL[q(Z \vert X)\vert \vert p(Z \vert X)] = \mathbb{E}_{Z} \left[\log{q(Z \vert X)} - \log{p(X \vert Z)} -\log{p(Z)} + \log{p(X)}  \right]</script>
+
+<p>Since the expectation is over <script type="math/tex">Z</script> the term <script type="math/tex">\log{p(X)}</script> is constant and can be factored out. Looking closely we see another KL divergence inside the expectation</p>
+
+<p><script type="math/tex">\mathbb{E}_{Z} \left[\log{q(Z \vert X)} - \log{p(Z)} \right] = KL \left[q(Z \vert X)\vert \vert p(Z) \right]</script>. Rearranging the equation we have the VAE objective function.</p>
+
+<script type="math/tex; mode=display">\mathcal{L} = \log{p(X)} - KL \left[q(Z \vert X)\vert \vert p(Z \vert X) \right] = \mathbb{E}_{Z} \left[\log{p(X \vert Z)} \right] - KL \left[q(Z \vert X)\vert \vert p(Z) \right]</script>
+
+<p>Let us see the meaning of all these distributions:</p>
+<ul>
+  <li><script type="math/tex">q(Z \vert X)</script> is a function which projects <script type="math/tex">X</script> into latent space.</li>
+  <li><script type="math/tex">p(X \vert Z)</script> is a function which projects <script type="math/tex">Z</script> into features space.</li>
+</ul>
+
+<p>It is common to say that <script type="math/tex">q(Z \vert X)</script> encodes the information of <script type="math/tex">X</script> as <script type="math/tex">Z</script> and <script type="math/tex">p(X \vert Z)</script> do the opposite, decodes <script type="math/tex">Z</script> back to <script type="math/tex">X</script>. In the ideal case we want the following diagram to commute</p>
+
+<p><img src="../assets/img/vae_identity_diagram.png" style="float: left; margin-right: 10px;" /></p>
+
+<p>On summary, looking at <script type="math/tex">\mathcal{L} = \log{p(X)} - KL \left[q(Z \vert X)\vert \vert p(Z \vert X) \right]</script> we want to model <script type="math/tex">\log{p(X)}</script> setting an error <script type="math/tex">KL \left[q(Z \vert X)\vert \vert p(Z \vert X) \right]</script>, i.e., the VAE tries to find a lower bound to <script type="math/tex">\log{p(X)}</script>, which is intractable.</p>
+
+<p>The model can be found maximizing <script type="math/tex">\log{p(X \vert Z)}</script> and minimizing the difference between <script type="math/tex">q(Z \vert X)</script> and <script type="math/tex">p(Z)</script>,</p>
+
+<script type="math/tex; mode=display">MAX_{X,Z} VAE = \mathbb{E} \left[\log{p(X \vert Z)} \right] - KL \left[q(Z \vert X) \vert \vert p(Z) \right]</script>
+
+<p>Remember that maximizing <script type="math/tex">\mathbb{E} \left[\log{p(X \vert Z)} \right]</script> is an estimation by maximum likelihood.</p>
+
+<p>There is only one question left. What kind of distribution should we use for <script type="math/tex">p(Z)</script>? We can try a something simple like a normal distribution with zero mean and variance one, <script type="math/tex">\mathcal{N}(0,1)</script>. Given <script type="math/tex">KL \left[q(Z \vert X) \vert \vert p(Z) \right]</script>, we want <script type="math/tex">q(Z \vert X)</script> to be as near as possible of <script type="math/tex">\mathcal{N}(0,1)</script>. The good part of the choice is that we have a closed form for the KL divergence. Let us represent the mean by <script type="math/tex">\mu(X)</script> and the variance by <script type="math/tex">\Sigma(X)</script>. The KL divergence is (we computed this in the Information Theory post)</p>
+
+<script type="math/tex; mode=display">KL \left[\mathcal{N}(\mu(X),\Sigma(X)) \vert \vert \mathcal{N}(0,1) \right] = \frac{1}{2} \sum_{k}\left(\Sigma(X)+ \mu^{2}(X) -1 -\log{\Sigma(X)} \right)</script>
+
+<p>where <script type="math/tex">k</script> is the Gaussian dimension. You will see that in practice it is stable if we use <script type="math/tex">\Sigma(X)</script> as <script type="math/tex">\log{\Sigma(X)}</script> and finally we have</p>
+
+<script type="math/tex; mode=display">KL \left[\mathcal{N}(\mu(X),\Sigma(X)) \vert \vert \mathcal{N}(0,1) \right] = \frac{1}{2} \sum_{k}\left(e^{\Sigma(X)}+ \mu^{2}(X) -1 -\Sigma(X) \right)</script>
+
+
+
+<span class="post-date">
+  Written on
+  
+  May
+  10th,
+  2020
+  by
+  
+    Junior A. Koch
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Variational AutoEncoder&amp;url=/journal/variational-autoencoder.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/journal/variational-autoencoder.html&amp;title=Variational AutoEncoder" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/journal/variational-autoencoder.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/journal/information-theory.html">
+                Information Theory
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>October 19, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">Disorder Transform | Math, physics, life, universe and everything by Junior A. Koch</a></div>
+</footer>
+
+  </div>
+
+</body>
+</html>
