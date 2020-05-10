@@ -44,7 +44,7 @@
   <!-- Use Jekyll SEO plugin -->
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Home | Disorder Transform</title>
-<meta name="generator" content="Jekyll v3.6.2" />
+<meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Home" />
 <meta name="author" content="Junior A. Koch" />
 <meta property="og:locale" content="en_US" />
@@ -54,7 +54,7 @@
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Disorder Transform" />
 <script type="application/ld+json">
-{"description":"Math, physics, life, universe and everything","@type":"WebSite","url":"http://localhost:4000/","name":"Disorder Transform","headline":"Home","author":{"@type":"Person","name":"Junior A. Koch"},"@context":"http://schema.org"}</script>
+{"@type":"WebSite","url":"http://localhost:4000/","name":"Disorder Transform","author":{"@type":"Person","name":"Junior A. Koch"},"headline":"Home","description":"Math, physics, life, universe and everything","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -106,48 +106,23 @@
       
 <div class="posts">
   <h1>
-    <a href="/journal/binning.html">Directed Graphs and Conditional Independence</a>
+    <a href="/journal/variational-autoencoder.html">Variational AutoEncoder</a>
   </h1>
   
   <div class="thumbnail-container">
-    <a href="/journal/binning.html"><img src="/assets/img/network.jpg"></a>
+    <a href="/journal/variational-autoencoder.html"><img src="/assets/img/information_theory.jpg"></a>
   </div>
   
   <p>
-    The Bias-Variance Tradeoff
+    Variational AutoEncoders or VAE are a class of generative models based on latent variables. Suppose we have our multidimensional data  and we want to build a model from which we can sample data at least similar to . We will make that with a multidimensional latent variable  to create a map .
 
-Let $g$ denote a function and $\hat{g}{n}$ denote an estimator of $g$. $\hat{g}{n}(x)$ is a random function evaluated at $x$. The loss is the integrated squared error (ISE):
+We need to model , where .
 
-$L(g,\hat{g}{n}) = \int \left( g(u) - \hat{g}{n}(u) \right)^{2}du$
-
-The risk or mean integrated squared error (MISE) with respect to squared err... <a href="/journal/binning.html">Read more</a>
-    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Jan 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
+The ideia of VAE is to in... <a href="/journal/variational-autoencoder.html">Read more</a>
+    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 10 May 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
   
   
-    less than 1 minute read
-  
-
-
-
-</span>
-  </p>
-</div>
-
-<div class="posts">
-  <h1>
-    <a href="/journal/dags-cond_indep.html">Directed Graphs and Conditional Independence</a>
-  </h1>
-  
-  <div class="thumbnail-container">
-    <a href="/journal/dags-cond_indep.html"><img src="/assets/img/network.jpg"></a>
-  </div>
-  
-  <p>
-    A Directed Graph is nothing more than a set of nodes and arrows. Nodes represent variables and arrows represent relationship between such variables. Directed Graphs can be used in similar way as Counter Factuals in order to represent causal relationship. When a graph has the meaning of a probability distributions it is usally called a Bayesian N... <a href="/journal/dags-cond_indep.html">Read more</a>
-    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 15 Jan 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
-  
-  
-    less than 1 minute read
+    2 minute read
   
 
 

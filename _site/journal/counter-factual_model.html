@@ -44,7 +44,7 @@
   <!-- Use Jekyll SEO plugin -->
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Counter Factual Model | Disorder Transform</title>
-<meta name="generator" content="Jekyll v3.6.2" />
+<meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Counter Factual Model" />
 <meta name="author" content="Junior A. Koch" />
 <meta property="og:locale" content="en_US" />
@@ -57,7 +57,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-09-01T00:00:00-03:00" />
 <script type="application/ld+json">
-{"description":"Inferência Causal","image":"http://localhost:4000/whatif.jpg","@type":"BlogPosting","url":"http://localhost:4000/journal/counter-factual_model.html","dateModified":"2019-09-01T00:00:00-03:00","datePublished":"2019-09-01T00:00:00-03:00","headline":"Counter Factual Model","author":{"@type":"Person","name":"Junior A. Koch"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/counter-factual_model.html"},"@context":"http://schema.org"}</script>
+{"datePublished":"2019-09-01T00:00:00-03:00","image":"http://localhost:4000/whatif.jpg","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/counter-factual_model.html"},"url":"http://localhost:4000/journal/counter-factual_model.html","author":{"@type":"Person","name":"Junior A. Koch"},"headline":"Counter Factual Model","dateModified":"2019-09-01T00:00:00-03:00","description":"Inferência Causal","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -170,21 +170,21 @@
 
 <script type="math/tex; mode=display">\frac{\mathbb{P}(C_{1}=1)}{\mathbb{P}(C_{0}=1)}</script>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># efeito causal médio</span>
-<span class="n">ecm</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># efeito causal médio
+</span><span class="n">ecm</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c"># razao causal provável</span>
-<span class="n">p_c1_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># razao causal provável
+</span><span class="n">p_c1_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C1'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">p_c1_0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_c1_1</span>
 <span class="n">p_c0_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'C0'</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">p_c0_0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_c0_1</span>
 
 <span class="n">rcp</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_c1_1</span><span class="o">/</span><span class="n">p_c1_0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p_c0_1</span><span class="o">/</span><span class="n">p_c0_0</span><span class="p">)</span>
 
-<span class="c"># risco causal relativo</span>
-<span class="n">rcr</span> <span class="o">=</span> <span class="n">p_c1_1</span> <span class="o">/</span> <span class="n">p_c0_1</span>
+<span class="c1"># risco causal relativo
+</span><span class="n">rcr</span> <span class="o">=</span> <span class="n">p_c1_1</span> <span class="o">/</span> <span class="n">p_c0_1</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"ECM: {:.3f}| RCP: {:.3f}| RCR: {:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ecm</span><span class="p">,</span><span class="n">rcp</span><span class="p">,</span><span class="n">rcr</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"ECM: {:.3f}| RCP: {:.3f}| RCR: {:.3f}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">ecm</span><span class="p">,</span><span class="n">rcp</span><span class="p">,</span><span class="n">rcr</span><span class="p">))</span>
 </code></pre></div></div>
 <p>Já a associação é definida como</p>
 
@@ -192,7 +192,7 @@
 
 <p>ou seja, o valor esperado de <script type="math/tex">Y</script> dado que <script type="math/tex">X=1</script> menos o valor esperado de <script type="math/tex">Y</script> dado que <script type="math/tex">X=0</script>. Vejamos a associação para nossos dados:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">association</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Free_Shipment'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s">'Sold'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'Free_Shipment'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s">'Sold'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Association: {:.3f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">association</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Association: {:.3f}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">association</span><span class="p">))</span>
 </code></pre></div></div>
 <p>Verificamos uma associação positiva, ou seja, oferecer frete <script type="math/tex">X=1</script> grátis aumenta as chances de venda, mas a associação não é igual ao efeito causal médio, como geralmente é o caso.</p>
 
