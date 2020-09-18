@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Introdução ao Manifold Learning - Geometria dos dados | Disorder Transform
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Disorder Transform" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="Disorder Transform | Math, physics, life, universe and everything"/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Introdução ao Manifold Learning - Geometria dos dados | Disorder Transform</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Introdução ao Manifold Learning - Geometria dos dados" />
+<meta name="author" content="Junior A. Koch" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Muito do trabalhado de um Cientista de Dados não está apenas em criar sistemas de classificação, regressão ou recomendação. Aliás, estes são normalmente o resultado do fim de uma grande jornada aplicando diversas técnicas em cima dos dados coletados. Uma importante parte dessa jornada está em descobrir maneiras de compreender e utilizar a estrutura dos dados." />
+<meta property="og:description" content="Muito do trabalhado de um Cientista de Dados não está apenas em criar sistemas de classificação, regressão ou recomendação. Aliás, estes são normalmente o resultado do fim de uma grande jornada aplicando diversas técnicas em cima dos dados coletados. Uma importante parte dessa jornada está em descobrir maneiras de compreender e utilizar a estrutura dos dados." />
+<link rel="canonical" href="http://localhost:4000/journal/intro-manifold.html" />
+<meta property="og:url" content="http://localhost:4000/journal/intro-manifold.html" />
+<meta property="og:site_name" content="Disorder Transform" />
+<meta property="og:image" content="http://localhost:4000/two_coordinate_charts_on_a_manifold.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-18T00:00:00-03:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-09-18T00:00:00-03:00","image":"http://localhost:4000/two_coordinate_charts_on_a_manifold.png","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/intro-manifold.html"},"url":"http://localhost:4000/journal/intro-manifold.html","author":{"@type":"Person","name":"Junior A. Koch"},"headline":"Introdução ao Manifold Learning - Geometria dos dados","dateModified":"2020-09-18T00:00:00-03:00","description":"Muito do trabalhado de um Cientista de Dados não está apenas em criar sistemas de classificação, regressão ou recomendação. Aliás, estes são normalmente o resultado do fim de uma grande jornada aplicando diversas técnicas em cima dos dados coletados. Uma importante parte dessa jornada está em descobrir maneiras de compreender e utilizar a estrutura dos dados.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Disorder Transform</a>
+    <small class="masthead-subtitle">Math, physics, life, universe and everything</small>
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+      <a href="/menu/contact.html">Contact</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  Introdução ao Manifold Learning - Geometria dos dados
+</h1>
+
+
+  <img src="/assets/img/two_coordinate_charts_on_a_manifold.png">
+
+
+<p>Muito do trabalhado de um Cientista de Dados não está apenas em criar sistemas de classificação, regressão ou recomendação. Aliás, estes são normalmente o resultado do fim de uma grande jornada aplicando diversas técnicas em cima dos dados coletados. Uma importante parte dessa jornada está em descobrir maneiras de compreender e utilizar a estrutura dos dados.</p>
+
+<p>Eu tenho um carinho especial por esse tipo de abordagem. Minha formação é como físico e boa parte da compreensão que temos do Universo veio através dessa estrutura dos dados observados. Vou dar um exemplo: compreendemos o Universo como uma espécie de superfície (uma superfície complicada, mas ainda sim uma superfície), nós vivemos sobre ela e qualquer coisa que possamos fazer deve obedecer um conjunto de regras (Leis Físicas) que são determinadas, a grosso modo, pelo formato da superfície, ou seja, pela geometria. Se há uma estrela em determinado lugar, a massa dela curva o espaço e a regra a que estamos submetidos é ser atraído para a estrela.</p>
+
+<p>O conjunto gigante de dados que observamos todos os dias pertence a algum universo próprio, com regras próprias e entender as regras desse ambiente nos permite entender como obter melhores respostas através dos dados. Temos hoje diversas maneiras de realizar este tipo de tarefa e aqui vou falar sobre uma chamada Manifold Learning ou Aprendizagem de Variedade. Primeiro precisamos entender o que é uma Variedade (Manifold em inglês).</p>
+
+<h2 id="algumas-definições">Algumas definições</h2>
+
+<p>Essa parte pode parecer chata se você não gosta de matemática, mas é essencial definirmos alguns termos para compreender o que há pela frente.</p>
+
+<p>Primeiro precisamos do conceito de <strong>mapa diferenciável</strong> (Um <strong>mapa</strong> é apenas uma definição mais abrangente de função):<br />
+Seja um mapa <script type="math/tex">f:U \rightarrow V</script>, onde <script type="math/tex">U \subset \mathbb{R}^{n}</script> e <script type="math/tex">V \subset \mathbb{R}^{k}</script>. Cada um deles, <script type="math/tex">U</script> e <script type="math/tex">V</script>, é um subconjunto de algum espaço Euclidiano (dois espaços com dimensões não necessariamente iguais). Dizemos que o mapa <script type="math/tex">f</script> é suave ou diferenciável se para qualquer <script type="math/tex">m</script> as derivadas</p>
+
+<script type="math/tex; mode=display">\frac{\partial^{m}f}{\partial x_{i}...\partial x_{m}}</script>
+
+<p>formam um mapa suave, ou seja, se as derivadas existem em todos os pontos (não há divisões por zero ou descontinuidades).</p>
+
+<p>Sejam <script type="math/tex">X \subset \mathbb{R}^{n}</script> e <script type="math/tex">Y \subset \mathbb{R}^{k}</script> subconjuntos quaisquer. O mapa <script type="math/tex">f: X \rightarrow Y</script> é suave se para cada <script type="math/tex">x\in X</script> existe uma vizinhança aberta <script type="math/tex">U \subset \mathbb{R}^{n}</script> (uma região de pontos vizinhos a <script type="math/tex">x</script> que não é um intervalo fechado) e um mapa suave <script type="math/tex">g: U \rightarrow \mathbb{R}^{k}</script> que coincida com <script type="math/tex">f</script> na intersecção <script type="math/tex">U \cap X</script>. Isso basicamente quer dizer que pode não existir um único mapa que mapeie todos os pontos de <script type="math/tex">X</script> para <script type="math/tex">Y</script>, mas se existir um conjunto de mapas que façam isso, então o conjunto é equivalente a um mapa suave.</p>
+
+<p>Dizemos que um mapa <script type="math/tex">f: X \rightarrow Y</script> é um <strong>homeomorfismo</strong> se é uma <a href="https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_bijectiva">bijeção</a> com <script type="math/tex">f</script> e sua inversa <script type="math/tex">f^{-1}</script> <strong>contínuas</strong>. No caso de <script type="math/tex">f</script> e <script type="math/tex">f^{-1}</script> serem ambas suaves, dizemos que o homeomorfismo é um <strong>difeomorfismo</strong>.</p>
+
+<p>Agora, uma variedade é um espaço topológico (basicamente um espaço em que conseguimos medir a distância entre dois pontos, pense em uma superfície qualquer) que localmente é difeomórfico a algum espaço Euclidiano, ou seja, há um conjunto de mapas capaz de projetar todos os pontos da variedade para o espaço Euclidiano que ao mesmo tempo possuem inversas contínuas e suaves. O termo localmente aqui significa <em>na vizinhança de algum ponto</em>.</p>
+
+<p>A chave aqui está na curvatura desse espaço, podemos entender uma variedade como um espaço topológico que ao olhado de perto (dando um zoom) não veremos curvatura, será um plano.</p>
+
+<p>Só nos falta agora a definição de variedade diferenciável. Seja <script type="math/tex">M \subset \mathbb{R}^{n}</script>, <script type="math/tex">M</script> é uma variedade diferenciável de dimensão <script type="math/tex">d</script> se para cada ponto <script type="math/tex">x \in M</script> existir uma vizinhança aberta <script type="math/tex">U</script> contendo <script type="math/tex">x</script> e um difeomorfismo <script type="math/tex">f:U \rightarrow V</script> onde <script type="math/tex">V \subset \mathbb{R}^{d}</script>. Essas vizinhanças são chamadas de <strong>patches</strong> coordenados e os difeomorfismos de cartas coordenadas (ou apenas sistemas de coordenadas, coordinate chart em inglês).</p>
+
+<p>Vamos a um exemplo: Pense em um círculo desenhado em um plano. O círculo é uma superfície de dimensão 1 <strong>merguhada</strong> (<strong>embedded</strong>) dentro do plano de duas dimensões, o <script type="math/tex">\mathbb{R}^{2}</script>. Cada um dos pontos desse círculo podem ser projetados no <script type="math/tex">\mathbb{R}^{2}</script> com as equações</p>
+
+<p><script type="math/tex">x = r \cdot cos(\theta),\ \ y = r \cdot sen(\theta)</script>,</p>
+
+<p>funções do ângulo <script type="math/tex">\theta</script> e do raio <script type="math/tex">r</script>. Para fazer a transformação inversa precisamos das equações</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+r = \sqrt{x^{2}+y^{2}},\ \ \theta = \left\{\begin{matrix}
+ arctan(y/x) & se\ y>0,\\ 
+ \pi & se\ y=0,\ x<0,  \\
+ \pi + arctan(y/x) & se\ y<0. \\  
+\end{matrix}\right. %]]></script>
+
+<p>Observe que temos três possíveis mapas de <script type="math/tex">\theta</script> para que possamos cobrir todo o círculo, três patches e três funções. Os mapas podem não ser suaves em algum ponto, mas há outro mapa suave nesse ponto. Assim cobrimos tudo e o círculo dotado dessas projeções, ou mapas diferenciáveis formam uma variedade de dimensão 1 mergulhada em um espaço Euclidiano de dimensão 2.</p>
+
+<h2 id="objetivo-de-manifold-learning">Objetivo de Manifold Learning</h2>
+
+<p>De posse desses conceitos podemos entender um conceito bem famoso em Ciência de Dados chamado de <strong>Hipótese da Variedade</strong>. Ela afirma que os dados observados(quaisquer que sejam) pertencem à uma variedade, ou seja, são pontos coletados desta superfície e com um número suficiente de pontos podemos recriar a variedade ou aprender suas propriedades. É isso que chamamos de <strong>Manifold Learning</strong>.</p>
+
+<p>Seja o dataset <script type="math/tex">X = \lbrace x_{1}, ..., x_{n}\rbrace \subset \mathbb{R}^{D}</script>, cada data point <script type="math/tex">x</script> é um vetor de dimensão $D$ (as vezes chamado de vetor de features). Assumimos que os dados pertencem à uma variedade de dimensão <script type="math/tex">d</script> mergulhada em <script type="math/tex">\mathbb{R}^{D}</script>, onde <script type="math/tex">% <![CDATA[
+d < D %]]></script>.</p>
+
+<p>A tarefa que queremos realizar é: Dado que <script type="math/tex">X \subset \mathbb{R}^{D}</script> tal que <script type="math/tex">X \subset M</script>, encontre a estrutura da variedade <script type="math/tex">M</script>, isto é, a coleção de patches coordenados e cartas coordenadas.</p>
+
+<p>Os patches de um conjunto discreto são construídos encontrando os <script type="math/tex">k</script> vizinhos mais próximos (knn, k-nearest neighbors) de cada ponto <script type="math/tex">x \in X</script>.</p>
+
+<script type="math/tex; mode=display">N_{k}(x_{i}) = \lbrace x \in X \vert x\ \text{é um knn de } x_{i} \rbrace</script>
+
+<p>Dados os patches o objetivo é descobrir os difeomorfismos:</p>
+
+<p><script type="math/tex">f_{i}: N_{k}(x_{i}) \rightarrow U_{i} \subset \mathbb{R}^{k}</script>,</p>
+
+<p>ou seja, as funções que mapeiam <script type="math/tex">x</script> e seus vizinhos para vizinhanças mergulhadas no <script type="math/tex">\mathbb{R}^{k}</script>.</p>
+
+<h2 id="e-agora">E agora?</h2>
+
+<p>Dado que tenhamos encontrado os difeomorfimos o que podemos fazer com eles?</p>
+
+<p>Bom, uma aplicação bem famosa é forçar que os difeomorfismos tenham dimensões pequenas, como 2 ou 3, para que a variedade possa ser visualizada. Essa é uma aplicação de Redução de Dimensionalidade (<a href="https://en.wikipedia.org/wiki/Dimensionality_reduction">Dimensionality Reduction</a>).</p>
+
+<p>Podemos ainda aplicar uma espécie de filtro que permita observar pedaços da variedade no formato de grafos e como ali se comportam o valor das features. Isso faz parte de uma área de estudo conhecida como Análise Topológica de Dados (<a href="https://en.wikipedia.org/wiki/Topological_data_analysis">Topolical Data Analysis</a>).</p>
+
+<p>Na minha humilde opinião as aplicações mais interessantes se encontram em aprender a estrutura da variedade de modo que possamos fazer amostragem (sampling) de sua pontos. As técnicas usadas para fazer isso são aquelas que usam modelos geradores como <a href="https://en.wikipedia.org/wiki/Generative_adversarial_network">Generative Adversarial Networks </a>, <a href="https://en.wikipedia.org/wiki/Autoencoder#Variational_autoencoder_(VAE)">Variational Autoencoder</a> e <a href="http://akosiorek.github.io/ml/2018/04/03/norm_flows.html">normalizing-flows</a>.</p>
+
+<p>Sobre as técnicas de manifold learning especificamente pretendo apresentar aqui futuramente.</p>
+
+
+<span class="post-date">
+  Written on
+  
+  September
+  18th,
+  2020
+  by
+  
+    Junior A. Koch
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Introdução ao Manifold Learning - Geometria dos dados&amp;url=/journal/intro-manifold.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/journal/intro-manifold.html&amp;title=Introdução ao Manifold Learning - Geometria dos dados" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/journal/intro-manifold.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/journal/variational-autoencoder.html">
+                Variational AutoEncoder
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 10, 2020</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/journal/information-theory.html">
+                Information Theory
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>October 19, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">Disorder Transform | Math, physics, life, universe and everything by Junior A. Koch</a></div>
+</footer>
+
+  </div>
+
+</body>
+</html>
