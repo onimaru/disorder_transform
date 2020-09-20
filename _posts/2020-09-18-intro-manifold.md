@@ -3,7 +3,7 @@ layout: post
 title: "Introdução ao Manifold Learning - Geometria dos dados"
 author: "Junior A. Koch"
 categories: journal
-tags: [information, Kullback, Leibler, mutual information, conditional information]
+tags: [manifold lerning, manifold, map]
 image: two_coordinate_charts_on_a_manifold.png
 ---
 
