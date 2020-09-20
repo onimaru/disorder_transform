@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Manifold Learning - Multidimensional Scaling | Disorder Transform
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Disorder Transform" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="Disorder Transform | Math, physics, life, universe and everything"/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Manifold Learning - Multidimensional Scaling | Disorder Transform</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Manifold Learning - Multidimensional Scaling" />
+<meta name="author" content="Junior A. Koch" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Seguindo com o assunto de Manifold Learning vamos ver como funciona a técnica chamada Isometric map, mas um dos passos dela é uma técnica chamada Multidimensional Scaling (MDS), por isso primeiro vamos ver como MDS funciona." />
+<meta property="og:description" content="Seguindo com o assunto de Manifold Learning vamos ver como funciona a técnica chamada Isometric map, mas um dos passos dela é uma técnica chamada Multidimensional Scaling (MDS), por isso primeiro vamos ver como MDS funciona." />
+<link rel="canonical" href="http://localhost:4000/journal/muldimensional-scaling.html" />
+<meta property="og:url" content="http://localhost:4000/journal/muldimensional-scaling.html" />
+<meta property="og:site_name" content="Disorder Transform" />
+<meta property="og:image" content="http://localhost:4000/two_coordinate_charts_on_a_manifold.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-20T00:00:00-03:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-09-20T00:00:00-03:00","image":"http://localhost:4000/two_coordinate_charts_on_a_manifold.png","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/journal/muldimensional-scaling.html"},"url":"http://localhost:4000/journal/muldimensional-scaling.html","author":{"@type":"Person","name":"Junior A. Koch"},"headline":"Manifold Learning - Multidimensional Scaling","dateModified":"2020-09-20T00:00:00-03:00","description":"Seguindo com o assunto de Manifold Learning vamos ver como funciona a técnica chamada Isometric map, mas um dos passos dela é uma técnica chamada Multidimensional Scaling (MDS), por isso primeiro vamos ver como MDS funciona.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Disorder Transform</a>
+    <small class="masthead-subtitle">Math, physics, life, universe and everything</small>
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+      <a href="/menu/contact.html">Contact</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  Manifold Learning - Multidimensional Scaling
+</h1>
+
+
+  <img src="/assets/img/two_coordinate_charts_on_a_manifold.png">
+
+
+<p>Seguindo com o assunto de Manifold Learning vamos ver como funciona a técnica chamada <strong>Isometric map</strong>, mas um dos passos dela é uma técnica chamada <strong><a href="https://en.wikipedia.org/wiki/Multidimensional_scaling">Multidimensional Scaling (MDS)</a></strong>, por isso primeiro vamos ver como MDS funciona.</p>
+
+<h2 id="matriz-de-distância">Matriz de distância</h2>
+
+<p>Dado um dataset <script type="math/tex">X</script> com <script type="math/tex">n</script> observações e <script type="math/tex">D</script> dimensões, precisamos de uma matriz de distância <script type="math/tex">\mathcal{d} \in \mathbb{R}^{n \times n}</script>, ou seja, uma matriz em que cada elemento <script type="math/tex">d_{ij}</script> representa um tipo de distância da observação <script type="math/tex">x_{i}</script> até a observação <script type="math/tex">x_{j}</script>, desse modo, <script type="math/tex">d_{ii}</script> (os elementos da diagonal principal) são sempre iguais a zero. A distância escolhida em princípio pode ser qualquer uma, mas é usual utilizar a distância euclidiana:</p>
+
+<script type="math/tex; mode=display">\mathcal{D}_{ij} = \vert \vert x_{i} - x_{j} \vert \vert^{2}</script>
+
+<p>Assim, devemos encontrar uma representação <script type="math/tex">\hat{X}</script> de dimensão <script type="math/tex">d</script> dos dados tal que a matriz de distância <script type="math/tex">\hat{\mathcal{D}}</script> seja solução de</p>
+
+<script type="math/tex; mode=display">min\ \sum_{i}\sum_{j} \left( \mathcal{D}_{ij} - \hat{\mathcal{D}}_{ij}  \right)^{2}</script>
+
+<p><strong>Novamente</strong>: nosso objetivo é encontrar uma representação dos dados de dimensão diferente de <script type="math/tex">D</script>, geralmente menor, e que mantenha as distâncias relativas entre os pares de pontos o mais próximas possíveis das originais.</p>
+
+<p>Se a distância for euclidiana podemos usar o produto interno de <script type="math/tex">X</script> com sua transposta, <script type="math/tex">X^{T}</script> para produzir:</p>
+
+<script type="math/tex; mode=display">X^{T}X = -\frac{1}{2}J \cdot \mathcal{D} \cdot J</script>
+
+<p>onde <script type="math/tex">J_{n} = \mathbb{I}_{n}- \frac{1}{n}\mathbb{O}_{n}</script> é a <a href="https://en.wikipedia.org/wiki/Centering_matrix">matriz centralizadora</a> e <script type="math/tex">\mathbb{O}_{n}</script> é a matriz <script type="math/tex">n \times n</script> com todos os elementos 1. Essa transformação de <script type="math/tex">\mathcal{D}</script> no produto interno de uma matriz com sua transposta é as vezes chamada de <em>Gram matrix</em> e é válida para qualquer matriz simétrica não negativa com zeros na diagonal.</p>
+
+<p>Isso serve apenas para dizer que podemos fazer uma decomposição de <script type="math/tex">X^{T}X</script> em autovetores e usá-los em uma nova representação. No caso de redução de dimensionalidade, como em outras técnicas, escolhemos os <script type="math/tex">k</script> autovetores com maior módulo.</p>
+
+<h2 id="decomposição-espectral">Decomposição espectral</h2>
+
+<p>Fazemos agora um procedimento típico, encontrar:</p>
+
+<script type="math/tex; mode=display">X^{T}X = U \Lambda U^{T}</script>
+
+<p>em que <script type="math/tex">\Lambda</script> é a matriz diagonal de autovalores e <script type="math/tex">U</script> é a matriz <script type="math/tex">n \times n</script> cuja <script type="math/tex">i</script>-ésima coluna é o <script type="math/tex">u_{i}</script> autovetor de <script type="math/tex">X^{T}X</script>. O objetivo se torna minimizar</p>
+
+<script type="math/tex; mode=display">\mathcal{L} = \vert \vert U \Lambda U^{T} - \hat{X}^{T}X \vert \vert = \vert \vert X^{T}X - \hat{X}^{T}X \vert \vert</script>
+
+<p>que é resolvida por <script type="math/tex">\hat{X} = U \Lambda^{1/2}</script>. Se quisermos uma representação <script type="math/tex">k</script>-dimensional escolhemos os <script type="math/tex">k</script> maiores valores de <script type="math/tex">\Lambda</script>, os autovalores, e construímos a nova representação (o embedding) calculando os autovetores correspondentes. Os vetores de <script type="math/tex">\hat{X}</script> podem ser usados para projetar os vetores originais do dataset na nova representação.</p>
+
+<h3 id="exemplo">Exemplo</h3>
+
+<p>Vejamos um exemplo simples, vamos gerar um dataset com valores quaisquer com <script type="math/tex">3</script> dimensões e vamos usar os princípios vistos acima para reduzir para <script type="math/tex">k=2</script> dimensões. Para facilitar o cálculo dos autovalores e autovetores faremos com o Tensorflow:</p>
+
+<p><img src="../assets/img/mds_01.png" style="float: left; margin-right: 10px;" /></p>
+
+<p>Chamamos o método <em>linalg.eigh</em> que recebe a matriz <script type="math/tex">T</script> e retorna um array com os autovalores em ordem crescente e a matriz de autovetores, <script type="math/tex">U</script>.</p>
+
+<p><img src="../assets/img/mds_02.png" style="float: left; margin-right: 10px;" /></p>
+<p><br /></p>
+
+<p>Note que para <script type="math/tex">k=2</script> vamos usar apenas os <script type="math/tex">2</script> maiores valores de <em>eigenvals</em>. Podemos calcular a matriz erro <script type="math/tex">T - U \Lambda U^{T}</script>, cujos valores devem ser próximos de zero.</p>
+
+<p><img src="../assets/img/mds_03.png" style="float: left; margin-right: 10px;" /></p>
+
+<p>Agora calculamos os autovetores de <script type="math/tex">k=2</script> e projetamos <script type="math/tex">X</script> nessas direções:</p>
+
+<p><img src="../assets/img/mds_04.png" style="float: left; margin-right: 10px;" /></p>
+
+<p>Feito isso estamos prontos para compreender a técnica chamada Isometric map. Se você conhece a técnica Principal Component Analysis (PCA) deve ter percebido alguma similaridades. Há várias técnicas que utulizam essas matrizes de distâncias ou algum outro tipo de métrica, como a covariância. O ponto importante é que PCA é uma técnica linear e portanto está limitada aos casos em que as observações pertencem a uma variedade sem curvatura, já as técnicas de Manifold Learning podem ser vistas como uma generalização não-linear de PCA.</p>
+
+
+<span class="post-date">
+  Written on
+  
+  September
+  20th,
+  2020
+  by
+  
+    Junior A. Koch
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Manifold Learning - Multidimensional Scaling&amp;url=/journal/muldimensional-scaling.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/journal/muldimensional-scaling.html&amp;title=Manifold Learning - Multidimensional Scaling" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/journal/muldimensional-scaling.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/journal/intro-manifold.html">
+                Introdução ao Manifold Learning - Geometria dos dados
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>September 18, 2020</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://www.github.com/onimaru" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="http://www.linkedin.com/in/juniorkoch/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">Disorder Transform | Math, physics, life, universe and everything by Junior A. Koch</a></div>
+</footer>
+
+  </div>
+
+</body>
+</html>
